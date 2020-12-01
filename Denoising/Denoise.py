@@ -7,8 +7,8 @@ origin_path = "Imgs/lena.jpg"
 img_path = "Imgs/Image_random.jpg"
 img_save_path = "Imgs/"
 
+# 读取灰度图片
 origin_img = cv2.imread(origin_path,0)
-
 img = cv2.imread(img_path,0)
 print("原始的峰值信噪比：",T.psnr(origin_img,img))
 # Gaussian Filter 高斯滤波

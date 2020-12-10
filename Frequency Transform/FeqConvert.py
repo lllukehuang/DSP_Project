@@ -51,19 +51,10 @@ def LaplaceShapen(freq):
     center_point = (h / 2, w / 2)
     for i in range(h):
         for j in range(w):
-            freq[i, j] *= -4*pi*pi*((i - center_point[0]) ** 2 + (j - center_point[1]) ** 2)
-    img_out = ifft(freq)
-    print(img_out)
-    img_out = np.real(img_out)
-    max = np.max(img_out)
-    min = np.min(img_out)
+            freq[i, j] *= -4*pi**2*((i - center_point[0]) ** 2 + (j - center_point[1]) ** 2)
+    return freq
 
-    res = np.zeros((h, w), dtype="uint8")
 
-    for i in range(h):
-        for j in range(w):
-            res[i, j] = 255 * (img_out[i, j] - min) / (max - min)
-    return img_out
 
 
 img = cv2.imread("1.jpg")
@@ -80,7 +71,10 @@ freq2 = freq1.copy()
 freq3 = freq1.copy()
 freq4 = freq1.copy()
 res = np.log(np.abs(freq1))
-
+plt.imshow(res)
+plt.axis('off')
+plt.show()
+plt.imsave('centered_spect.png',res)
 
 freq1 = GaussianLowPFreqFilter(freq1, 40)
 freq2 = GaussianHighPFreqFilter(freq2, 40)
@@ -88,9 +82,26 @@ freq3 = LaplaceShapen(freq3)
 
 img2 = ifft(freq1)
 img3 = ifft(freq2)
-#img4 = ifft(freq3)
 
-sharpen_img = img_grey-freq3
+lap_img = ifft(freq3)
+cv2.imwrite("Lap_freq.png",lap_img)
+
+for i in range(lap_img.shape[0]):
+    for j in range(lap_img.shape[1]):
+        if lap_img[i][j]>128:
+            lap_img[i][j] *= 1
+        else:
+            lap_img[i][j] = 0
+
+
+
+cv2.imshow('111',lap_img)
+cv2.waitKey()
+
+
+
+sharpen_img = img_grey+lap_img
+
 
 max = np.max(img_grey)
 min = np.min(img_grey)
@@ -99,19 +110,15 @@ h,w = sharpen_img.shape
 
 for i in range(h):
     for j in range(w):
-        sharpen_img[i, j] = 255*(sharpen_img[i, j] - min)/(max - min)
+        sharpen_img[i, j] = (sharpen_img[i, j] - min)/(max - min)
 
 
-plt.imshow(sharpen_img, cmap='gray')
-plt.axis('off')
-#plt.show()
+
 cv2.imwrite("gauss_lowp.png", img2)
 cv2.imwrite("gauss_highp.png", img3)
-print(sharpen_img)
-cv2.imwrite("Lap.png",sharpen_img)
-'''
-img_out = cv2.Laplacian(img_grey, ddepth=cv2.CV_64F)
-img_out = cv2.convertScaleAbs(img_grey-img_out)
-cv2.imshow("1",img_out)
-cv2.waitKey()
-'''
+
+
+cv2.imwrite("Sharpen.png",225*sharpen_img)
+
+
+

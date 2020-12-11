@@ -4,7 +4,7 @@ import numpy as np
 import tools.tools as T
 
 origin_path = "Imgs/lena.jpg"
-img_path = "Imgs/Image_gaussian.jpg"
+img_path = "Imgs/Image_salt.jpg"
 img_save_path = "Imgs/"
 logfile_path = "Imgs/PSNR.txt"
 f = open(logfile_path,"w",encoding='utf=8')
@@ -33,7 +33,7 @@ print("优化后中值滤波后的峰值信噪比：",T.psnr(origin_img,out))
 f.write("优化后中值滤波后的峰值信噪比："+str(T.psnr(origin_img,out)))
 f.write("\n")
 # bilateral filter 双边滤波
-out = cv2.bilateralFilter(src=img, d=0, sigmaColor=100, sigmaSpace=15)
+out = cv2.bilateralFilter(src=img, d=0, sigmaColor=100, sigmaSpace=1)
 cv2.imwrite(img_save_path + "bilateral_out.jpg", out)
 print("双边滤波后的峰值信噪比：",T.psnr(origin_img,out))
 f.write("双边滤波后的峰值信噪比："+str(T.psnr(origin_img,out)))

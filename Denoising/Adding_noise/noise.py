@@ -35,7 +35,7 @@ def noise( imgpath , m ) :
     prob = 0.1 # the prob of pepper noise in s&p
     thres = 1 - prob # the prob of salt noise in s&p
     mean = 0 # mean in gaussian noise
-    var = 0.001 # variance in gaussian noise
+    var = 0.01 # variance in gaussian noise
 
     if m == "random" :
         rows, cols, chn = img.shape

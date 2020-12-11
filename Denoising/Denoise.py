@@ -4,7 +4,7 @@ import numpy as np
 import tools.tools as T
 
 origin_path = "Imgs/lena.jpg"
-img_path = "Imgs/Image_pepper.jpg"
+img_path = "Imgs/Image_gaussian.jpg"
 img_save_path = "Imgs/"
 logfile_path = "Imgs/PSNR.txt"
 f = open(logfile_path,"w",encoding='utf=8')
@@ -15,7 +15,7 @@ print("原始的峰值信噪比：",T.psnr(origin_img,img))
 f.write("原始的峰值信噪比："+str(T.psnr(origin_img,img)))
 f.write("\n")
 # Gaussian Filter 高斯滤波
-out = sp.gauss.gaussian_filter(img, kernel_size=3, sigmax=1.3)
+out = sp.gauss.gaussian_filter(img, kernel_size=3, sigmax=0)
 # Save result
 cv2.imwrite(img_save_path + "gauss_out.jpg", out)
 # cv2.imshow("gauss_result", out)

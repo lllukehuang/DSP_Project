@@ -19,7 +19,7 @@ def MedianFilter(src, dst, k=3, padding=None):
                 else:
                     new_arr[i, j] = np.median(imarray[i - edge:i + edge + 1, j - edge:j + edge + 1]) # 计算中位数
         new_im = Image.fromarray(new_arr)
-        new_im.save(dst)
+        # new_im.save(dst)
     return new_im
 
 if __name__ == '__main__':

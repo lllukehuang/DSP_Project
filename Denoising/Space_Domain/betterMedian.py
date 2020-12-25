@@ -28,7 +28,7 @@ def BetterMedianFilter(src, dst, k=3, padding=None):
                     else:
                         new_arr[i, j] = imarray[i, j]
         new_im = Image.fromarray(new_arr)
-        new_im.save(dst)
+        # new_im.save(dst)
     return new_im
 
 if __name__ == '__main__':

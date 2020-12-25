@@ -5,7 +5,7 @@ import tools.tools as T
 import matplotlib.pyplot as plt
 
 origin_path = "Imgs/lena.jpg"
-noise = "gaussian"
+noise = "s&p"
 img_path = "Imgs/Image_" + noise + ".jpg"
 img_save_path = "Imgs/"
 logfile_path = "Imgs/PSNR.txt"
@@ -43,7 +43,7 @@ ax1.set_title("Optimized Median Filtering Result")
 plt.imshow(out,cmap="gray")
 
 # bilateral filter 双边滤波
-out = cv2.bilateralFilter(src=img, d=0, sigmaColor=200, sigmaSpace=1)
+out = cv2.bilateralFilter(src=img, d=0, sigmaColor=500, sigmaSpace=1)
 # cv2.imwrite(img_save_path + "bilateral_out.jpg", out)
 print("双边滤波后的峰值信噪比：",T.psnr(origin_img,out))
 

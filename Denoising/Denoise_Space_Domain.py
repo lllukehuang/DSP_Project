@@ -8,7 +8,7 @@ img_path = "Imgs/Image_s&p.jpg"
 img_save_path = "Imgs/"
 logfile_path = "Imgs/PSNR.txt"
 f = open(logfile_path,"w",encoding='utf=8')
-# 读取灰度图片
+# 读取灰度图片和加噪图片
 origin_img = cv2.imread(origin_path,0)
 img = cv2.imread(img_path,0)
 print("原始的峰值信噪比：",T.psnr(origin_img,img))

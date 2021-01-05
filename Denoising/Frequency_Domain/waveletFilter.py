@@ -15,6 +15,7 @@ plt.title('Original')
 noiseSigma = 16.0
 noised_image = image
 noised_image += np.random.normal(0, noiseSigma, size=image.shape).astype(np.uint8)
+noised_image = misc.imread('./imgs/gauss_out.jpg', mode='L')
 
 wavelet = pywt.Wavelet('bior2.8')
 levels = int(np.floor(np.log2(image.shape[0])))
@@ -22,6 +23,7 @@ levels = int(np.floor(np.log2(image.shape[0])))
 WaveletCoeffs = pywt.wavedec2(noised_image, wavelet, level=levels)
 
 threshold = noiseSigma * np.sqrt(2 * np.log2(image.size))
+threshold = 20
 NewWaveletCoeffs = list(map(lambda x: pywt.threshold(x, threshold), WaveletCoeffs))
 NewImage = pywt.waverec2(NewWaveletCoeffs, wavelet)
 

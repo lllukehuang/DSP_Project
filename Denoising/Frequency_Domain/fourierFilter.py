@@ -42,7 +42,7 @@ def getFreqSpectrum(img):
     return fimg, fimgamp, fimgphase
 
 
-img = cv2.imread('./imgs/lena.png', cv2.IMREAD_GRAYSCALE)
+img = cv2.imread('./imgs/gau.png', cv2.IMREAD_GRAYSCALE)
 # 傅里叶变换频谱图、幅度谱、相位谱
 fimg, fimgamp, fimgphase = getShiftedFreqSpectrum(img)
 # 逆傅里叶变换
@@ -94,7 +94,7 @@ gkernel = gkern1(imgb.shape[0], 1)
 fkernel, fkernelamp, fkernelphase = getFreqSpectrum(gkernel)
 
 img1filtered1 = cv2.GaussianBlur(imgb, (imgb.shape[0], imgb.shape[1]), 1)
-fimg1filtere2 = fkernel*fimg1
+fimg1filtere2 = fkernel * fimg1
 img1filtered2 = np.abs(ifft2(fimg1filtere2))
 roilen = imgb.shape[0]//2
 for y in [0, 1]:

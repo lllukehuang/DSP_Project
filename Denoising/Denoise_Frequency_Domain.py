@@ -24,7 +24,7 @@ f.write("\n")
 '''
 out = fr.fourierFilter.fourierDenoise(img)
 # Save result
-cv2.imwrite(img_save_path + "./frequency/wavelet_out.jpg", out)
+cv2.imwrite(img_save_path + "fourier_out.jpg", out)
 print("傅里叶变换滤波后的峰值信噪比：",T.psnr(origin_img, out))
 f.write("傅里叶变换滤波后的峰值信噪比：" + str(T.psnr(origin_img,out)))
 f.write("\n")
@@ -39,7 +39,7 @@ plt.imshow(out, cmap="gray")
 '''
 out = fr.waveletFilter.w2d_test(img, mode='db1')
 # Save result
-cv2.imwrite(img_save_path + "./frequency/wavelet_out.jpg", out)
+cv2.imwrite(img_save_path + "wavelet_out.jpg", out)
 print("小波变换滤波后的峰值信噪比：",T.psnr(origin_img, out))
 f.write("小波变换滤波后的峰值信噪比：" + str(T.psnr(origin_img,out)))
 f.write("\n")

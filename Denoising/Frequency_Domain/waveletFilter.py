@@ -107,7 +107,7 @@ def w2d_test(imArray, mode='db1'):
             imArray_H[i][j] = 255 - imArray_H[i][j]
     # imArray_H = imArray_H[:223,:203]
     imArray_H.resize(height,width)
-    cv2.imshow("wdnmd",imArray_H)
+    # cv2.imshow("wdnmd",imArray_H)
     cv2.waitKey(0)
 
     return imArray_H

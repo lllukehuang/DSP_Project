@@ -57,7 +57,8 @@ def LaplaceShapen(freq):
 
 
 
-img = cv2.imread("1.jpg")
+# img = cv2.imread("1.jpg")
+img = cv2.imread("lena.png")
 ### change the channel from BGR to RGB####
 b, g, r = cv2.split(img)
 img = cv2.merge([r, g, b])

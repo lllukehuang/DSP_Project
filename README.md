@@ -15,3 +15,21 @@
 #### 3.Image denoising and result analysis
 
 - Gaussian template, spatial domain method of median filtering and frequency filtering method of Fourier transform and wavelet transform are respectively used to de-noising images. Based on PSNR (peak signal-to-noise ratio) value and visual effect, the denoising ability of these four denoising methods to different types of noise added before should be compared.
+
+## Our code file structure
+
+### Frequency Domain Analysis of Images
+
+For the original image, we have made a series of conversion and analysis in the frequency domain, which can help us understand and grasp the image's frequency domain characteristics and frequency domain filtering properties more intuitively.
+
+All test files and code are located at [Frequency Transform](./Frequency%20Transform)
+
+### Images Denoising
+
+In [Denoising](./Denoising) folder we tried different denoising methods in different directions. 
+
+We first systematically added different kinds of noise to the original test image through [CreateNoiseImg.py](./Denoising/CreateNoiseImg.py), then test a quantity of denoising methods in space domain and frequency domain. Some of the results are shown in [Imgs](./Denoising/Imgs) folder. More results and analysis are shown in our report paper. 
+
+### On-line inspection
+
+You can clone this code base and change your files in [Imgs](./Denoising/Imgs) folder. Then you can test different denoising method on your own images.
